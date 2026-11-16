@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101b35">
+<title>BBCT2 | Plataforma</title>
+<style>
+:root{--bg:#0b1224;--panel:#121e38;--panel2:#172746;--line:#2a3b5d;--text:#f4f7ff;--muted:#aab8d2;--accent:#55d6be;--gold:#f4c66a}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0b1224,#101d38 55%,#102d3c);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.wrap{max-width:1080px;margin:auto;padding:24px 18px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0 28px}.brand{display:flex;align-items:center;gap:12px;font-weight:850;font-size:1.35rem;letter-spacing:.08em}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#267b9b);display:grid;place-items:center;color:#071526;font-weight:950}.tag{color:var(--muted);font-size:.82rem}.hero{padding:30px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(120deg,rgba(31,54,91,.9),rgba(18,30,56,.9));box-shadow:0 18px 50px #0003}.eyebrow{color:var(--accent);font-weight:750;text-transform:uppercase;letter-spacing:.12em;font-size:.75rem}h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.08;margin:10px 0}h2{font-size:1.35rem;margin:0 0 14px}.muted{color:var(--muted)}.section{margin-top:28px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}.plan{display:flex;flex-direction:column;gap:10px}.plan .days{font-size:1.8rem;font-weight:850}.price{font-size:1.35rem;font-weight:800;color:var(--gold)}button,.btn{border:0;border-radius:12px;padding:12px 16px;background:var(--accent);color:#071526;font-weight:800;cursor:pointer;font-size:.95rem}button.secondary{background:#263958;color:var(--text);border:1px solid var(--line)}button:disabled{opacity:.5;cursor:not-allowed}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.field{display:grid;gap:6px;margin:10px 0}.field label{color:var(--muted);font-size:.9rem}.field input{width:100%;padding:12px 13px;border-radius:10px;border:1px solid var(--line);background:#0b162d;color:var(--text);font:inherit}.timer{font-size:clamp(1.6rem,5vw,2.5rem);font-variant-numeric:tabular-nums;font-weight:850;color:var(--accent);letter-spacing:.04em}.notice{border-left:3px solid var(--gold);padding:10px 13px;background:#3a321e55;border-radius:8px;color:#f4dfae;font-size:.9rem}.hidden{display:none}.small{font-size:.82rem;color:var(--muted)}.copyline{overflow-wrap:anywhere;background:#0b162d;padding:10px 12px;border:1px solid var(--line);border-radius:10px}.status{display:inline-block;padding:4px 9px;border-radius:20px;background:#263958;color:#dce8ff;font-size:.78rem}
+footer{margin-top:35px;color:var(--muted);font-size:.82rem;text-align:center}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.hero{padding:23px}.top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">B2</div><div>BBCT2<div class="tag">Plataforma de usuarios</div></div></div><span class="status">Versión inicial · demostración</span></header>
+<section class="hero">
+<div class="eyebrow">Bienvenido a BBCT2</div>
+<h1>Tu espacio de usuario,<br>en un solo lugar.</h1>
+<p class="muted">Consulta los planes, revisa el tiempo de tu activación y encuentra tu enlace de referido.</p>
+<div class="notice">Esta es una maqueta HTML para revisar el diseño. No recibe dinero, no crea cuentas seguras ni confirma pagos reales.</div>
+</section>
+<section class="section">
+<h2>Planes disponibles</h2>
+<p class="muted">Los precios se configurarán cuando confirmes los valores oficiales.</p>
+<div class="grid">
+<article class="card plan"><div class="eyebrow">Plan inicial</div><div class="days">6 días</div><div class="price">Precio por definir</div><p class="muted">Acceso durante seis días desde la activación.</p><button onclick="choosePlan(6)">Seleccionar plan</button></article>
+<article class="card plan"><div class="eyebrow">Plan intermedio</div><div class="days">15 días</div><div class="price">Precio por definir</div><p class="muted">Acceso durante quince días desde la activación.</p><button onclick="choosePlan(15)">Seleccionar plan</button></article>
+<article class="card plan"><div class="eyebrow">Plan mensual</div><div class="days">1 mes</div><div class="price">Precio por definir</div><p class="muted">Acceso durante un mes desde la activación.</p><button onclick="choosePlan(30)">Seleccionar plan</button></article>
+</div>
+</section>
+<section class="section grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+<div class="card">
+<h2>Mi activación</h2>
+<p class="muted">Plan seleccionado: <strong id="selected">Ninguno</strong></p>
+<div class="timer" id="timer">--:--:--</div>
+<p class="small" id="timerInfo">El cronómetro comenzará cuando se active un plan en una versión conectada a un sistema real.</p>
+<button class="secondary" onclick="demoStart()">Probar cronómetro (demo)</button>
+</div>
+<div class="card">
+<h2>Mi referido</h2>
+<p class="muted">Enlace de ejemplo generado para esta demostración:</p>
+<div class="copyline"><a id="refLink" href="https://bbct2.example/ref/DEMO" style="color:#55d6be">https://bbct2.example/ref/DEMO</a></div>
+<div class="row" style="margin-top:12px"><button class="secondary" onclick="copyRef()">Copiar enlace</button></div>
+<p class="small">Los enlaces individuales reales requieren registro de usuarios y una base de datos.</p>
+</div>
+</section>
+<section class="section card">
+<h2>Registro de pago (demostración)</h2>
+<p class="muted">Esta sección es solo visual. No ingreses datos bancarios ni información confidencial.</p>
+<div class="field"><label for="name">Nombre del usuario</label><input id="name" placeholder="Tu nombre"></div>
+<div class="field"><label for="plan">Plan seleccionado</label><input id="plan" placeholder="Selecciona uno de los planes" readonly></div>
+<div class="field"><label for="reference">Referencia de pago (opcional, demo)</label><input id="reference" placeholder="Ejemplo: DEMO-0001"></div>
+<button class="secondary" onclick="alert('Demostración: todavía no se envían pagos ni solicitudes.')">Enviar (demo)</button>
+</section>
+<footer>BBCT2 · Prototipo inicial HTML · No procesa pagos ni ofrece activaciones reales.</footer>
+</div>
+<script>
+let chosenDays=0, endAt=null, ticker=null;
+function choosePlan(days){chosenDays=days;document.getElementById('selected').textContent=days===30?'1 mes':days+' días';document.getElementById('plan').value=days===30?'1 mes':days+' días';document.getElementById('timerInfo').textContent='Plan elegido. En producción, el administrador confirmará el pago y activará el tiempo.'}
+function demoStart(){if(!chosenDays){alert('Primero selecciona un plan.');return;}endAt=Date.now()+Math.min(chosenDays,1)*60*1000; if(ticker)clearInterval(ticker);tick();ticker=setInterval(tick,1000);document.getElementById('timerInfo').textContent='Cronómetro de prueba de 1 minuto. No es una activación real.'}
+function tick(){let left=Math.max(0,endAt-Date.now());let h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);document.getElementById('timer').textContent=[h,m,s].map(x=>String(x).padStart(2,'0')).join(':');if(left<=0&&ticker){clearInterval(ticker);ticker=null;document.getElementById('timerInfo').textContent='Terminó la prueba del cronómetro.'}}
+function copyRef(){let t=document.getElementById('refLink').href;if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>alert('Enlace de demostración copiado.'));}else{alert(t)}}
+</script>
+</body>
+</html>
